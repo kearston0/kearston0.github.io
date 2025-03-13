@@ -95,5 +95,4 @@ To update the live site:
 
 Have questions or ideas? Reach out via **GitHub Issues** or start a discussion in the **community tab**.
 
-Join us on this creative journey — let’s fill the **Fridge Door** with inspiration.
-
+Join us on this creative journey!
