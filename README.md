@@ -1,98 +1,54 @@
-# Fridge Door
+# React + TypeScript + Vite
 
-Welcome to **Fridge Door** — a collaborative blog platform designed for writers, artists, and creators to share ideas in an open, interactive, and secure environment. Inspired by the way families and roommates use fridge doors to leave notes, reminders, and doodles, our platform fosters creativity and community.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## About the Platform
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Key Features
+## Expanding the ESLint configuration
 
-- **Post and Share:** Creative content — from blog posts to artwork.
-- **Collaborate:** Edit drafts and content through GitHub's version control.
-- **Scale:** Seamless cloud hosting.
-- **Secure:** Transparency and access control with GitHub.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-The platform’s name reflects our roots as "lab rats" and the simple yet powerful concept of a communal space for shared thoughts.
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## How It Works
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-### 1. Submit Content
-- Fork the repository.
-- Add your content to the `_posts` folder (Markdown format preferred).
-- Open a pull request.
-
-### 2. Edit and Collaborate
-- Review content directly on GitHub.
-- Suggest edits and view version history.
-
-### 3. Publish
-- Once approved, your work appears live on the site.
-
-We believe in collective creativity — anyone can contribute, and every voice matters.
-
----
-
-## Project Structure
-
-- **`_posts/`** — Contains all blog posts and creative submissions.
-- **`_layouts/`** — HTML templates for pages.
-- **`assets/`** — CSS, images, and other static files.
-- **`_config.yml`** — Site configuration.
-- **`index.md`** — Homepage content.
-
----
-
-## Setting Up Locally
-
-To run **Fridge Door** on your local machine:
-
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/fridge-door.git
-   ```
-2. Install Jekyll:
-   ```bash
-   gem install jekyll bundler
-   ```
-3. Serve the site:
-   ```bash
-   bundle exec jekyll serve
-   ```
-4. View locally at:
-   ```
-   http://localhost:4000
-   ```
-
----
-
-## Contribution Guidelines
-
-We welcome contributions! Here’s how you can help:
-
-- **Submit** blog posts, poems, artwork, or essays.
-- **Review** open pull requests and provide feedback.
-- **Report** bugs or suggest features via GitHub Issues.
-
-For detailed guidelines, check out our [CONTRIBUTING.md](CONTRIBUTING.md).
-
----
-
-## Deployment
-
-Our platform is hosted on **GitHub Pages** and will soon integrate with **Google Cloud** for enhanced scalability and security.
-
-To update the live site:
-
-- Merge your changes into the `main` branch.
-- GitHub Pages will automatically rebuild and deploy.
-
----
-
-## Contact
-
-Have questions or ideas? Reach out via **GitHub Issues** or start a discussion in the **community tab**.
-
-Join us on this creative journey!
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```

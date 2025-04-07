@@ -1,8 +1,7 @@
 {
-    "compilerOptions": {
-      "jsx": "react-jsx",  // or "react" for older versions
-      "esModuleInterop": true,
-      "strict": true
-    }
-  }
-  
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
