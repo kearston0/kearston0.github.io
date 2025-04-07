@@ -1,3 +1,4 @@
+"use strict";
 // const Feed = () => {
 //     return (
 //       <div className="p-4">
@@ -6,6 +7,4 @@
 //       </div>
 //     );
 //   };
-  
 //   export default Feed;
-  
